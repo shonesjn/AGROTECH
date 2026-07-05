@@ -4,7 +4,6 @@ import cors from "cors";
 
 import connectDB from "./config/db.js";
 import sensorRoutes from "./routes/sensorRoutes.js";
-import startSimulator from "./simulator/sensorSimulator.js";
 
 dotenv.config();
 
@@ -16,8 +15,8 @@ app.use(express.json());
 
 // Connect MongoDB
 connectDB().then(() => {
-  console.log(" Starting Virtual Sensor...");
-  startSimulator();
+  console.log("MongoDB Connected");
+  console.log("Waiting for ESP32 (Wokwi) data...");
 });
 
 // Home Route
@@ -32,5 +31,5 @@ app.use("/api/sensors", sensorRoutes);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(` Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
