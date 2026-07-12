@@ -33,22 +33,22 @@ export default function PremiumButton({
         ${
           primary
             ? `
+              border-2
+              border-transparent
               bg-gradient-to-r
-              from-green-500
-              to-emerald-500
+              from-emerald-400
+              via-emerald-500
+              to-teal-600
               text-white
-              shadow-lg
-              shadow-green-500/30
-              hover:shadow-green-500/60
+              shadow-[0_0_20px_rgba(16,185,129,0.4)]
+              hover:shadow-[0_0_30px_rgba(16,185,129,0.6)]
             `
             : `
-              border
-              border-green-400/40
-              bg-white/5
-              backdrop-blur-lg
-              text-white
-              hover:bg-green-500/10
-              hover:border-green-400
+              glass-pill
+              text-gray-100
+              hover:bg-white/10
+              hover:text-white
+              hover:border-emerald-500/50
             `
         }
 

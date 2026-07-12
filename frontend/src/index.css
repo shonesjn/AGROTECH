@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 /* ===========================
@@ -19,8 +19,8 @@ html {
 
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #071320, #0B1120, #111827);
+  font-family: "Inter", sans-serif;
+  background-color: #050b14;
   color: white;
   overflow-x: hidden;
 }
@@ -37,7 +37,7 @@ h1,
 h2,
 h3,
 .logo-text {
-  font-family: "Exo 2", sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 a {
@@ -65,40 +65,63 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  background: #111827;
+  background: #050b14;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #22C55E;
+  background: #10b981;
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #16A34A;
+  background: #059669;
 }
 
 /* ===========================
-   Utilities
+   Utilities & Effects
 =========================== */
 
 .glass {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-pill {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .green-glow {
   box-shadow:
-    0 0 20px rgba(34,197,94,.35),
-    0 0 60px rgba(34,197,94,.15);
+    0 0 20px rgba(16, 185, 129, 0.3),
+    0 0 60px rgba(16, 185, 129, 0.1);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #34d399, #10b981, #059669);
+}
+
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
 .hover-lift {
-  transition: all .3s ease;
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hover-lift:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2);
 }
 
 .animate-fade {
@@ -110,7 +133,6 @@ img {
     opacity: 0;
     transform: translateY(25px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);

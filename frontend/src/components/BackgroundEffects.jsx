@@ -1,14 +1,34 @@
+import { motion } from "framer-motion";
+
 export default function BackgroundEffects() {
   return (
     <>
-      {/* Main Background */}
-      <div className="fixed inset-0 -z-50 bg-gradient-to-br from-[#071320] via-[#0B1120] to-[#111827]" />
+      {/* Main Background & Grid Pattern */}
+      <div className="fixed inset-0 -z-50 bg-[#050b14] bg-grid-pattern" />
 
-      {/* Green Glow Top Left */}
-      <div className="fixed top-0 left-0 w-96 h-96 bg-green-500/10 blur-[120px] rounded-full -z-40" />
+      {/* Animated Green Glow Top Left */}
+      <motion.div 
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+          x: [0, 50, 0],
+          y: [0, 30, 0]
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-emerald-500/20 blur-[150px] rounded-full -z-40 pointer-events-none" 
+      />
 
-      {/* Green Glow Bottom Right */}
-      <div className="fixed bottom-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 blur-[150px] rounded-full -z-40" />
+      {/* Animated Green Glow Bottom Right */}
+      <motion.div 
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.2, 0.4, 0.2],
+          x: [0, -60, 0],
+          y: [0, -40, 0]
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-teal-500/15 blur-[160px] rounded-full -z-40 pointer-events-none" 
+      />
     </>
   );
 }
