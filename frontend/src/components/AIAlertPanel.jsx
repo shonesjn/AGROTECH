@@ -154,7 +154,7 @@ export default function AIAlertPanel() {
           </div>
           <div>
             <h2 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 tracking-tight drop-shadow-sm">
-              AgroAI Engine
+              AgroTech Alert Panel
             </h2>
             <div className="flex items-center gap-2 mt-1.5">
               <Sparkles className="text-primary animate-pulse" size={14} />

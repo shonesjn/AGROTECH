@@ -64,7 +64,7 @@ const buildHistoryContext = (history = []) => {
 
   return history
     .slice(-8)
-    .map((item) => `${item.sender === "user" ? "User" : "AgroBot"}: ${item.text}`)
+    .map((item) => `${item.sender === "user" ? "User" : "AgroTech Chatbot"}: ${item.text}`)
     .join("\n");
 };
 
@@ -91,7 +91,7 @@ export const chatWithGemini = async (req, res) => {
       body: JSON.stringify({
         model: process.env.GEMINI_MODEL || DEFAULT_GEMINI_MODEL,
         system_instruction:
-          "You are AgroBot, an AgroTech farming assistant. Answer only questions about agriculture, crops, soil, irrigation, farm sensors, and the user's live dashboard. Use the dashboard data when relevant. Keep answers short, practical, and easy for a farmer to act on. If the user asks unrelated questions, politely redirect to farming.",
+          "You are AgroTech Chatbot, an AgroTech farming assistant. Answer only questions about agriculture, crops, soil, irrigation, farm sensors, and the user's live dashboard. Use the dashboard data when relevant. Keep answers short, practical, and easy for a farmer to act on. If the user asks unrelated questions, politely redirect to farming.",
         input: [
           "Live dashboard data:",
           buildDashboardContext(dashboard),

@@ -16,6 +16,7 @@ export const addSensorData = async (req, res) => {
       lightConfidence = 100,
       tiltConfidence = 100,
 
+      confidence,
       overallConfidence = 100,
       status = "Reliable",
     } = req.body;
@@ -44,7 +45,7 @@ export const addSensorData = async (req, res) => {
       lightConfidence,
       tiltConfidence,
 
-      overallConfidence,
+      overallConfidence: confidence !== undefined ? confidence : overallConfidence,
       status,
     });
 

@@ -228,7 +228,7 @@ export default function ChatbotWidget({ sensor, isConnected }) {
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-primary text-[#003824] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(78,222,163,0.4)] hover:scale-110 hover:shadow-[0_0_30px_rgba(78,222,163,0.6)] transition-all animate-bounce"
-        aria-label="Open AgroBot Assistant"
+        aria-label="Open AgroTech Chatbot"
       >
         <span className="material-symbols-outlined text-[28px]">smart_toy</span>
       </button>
@@ -243,7 +243,7 @@ export default function ChatbotWidget({ sensor, isConnected }) {
             <span className="material-symbols-outlined text-[24px]">smart_toy</span>
           </div>
           <div>
-            <h3 className="text-white font-bold text-sm tracking-wide">AgroBot Assistant</h3>
+            <h3 className="text-white font-bold text-sm tracking-wide">AgroTech Chatbot</h3>
             <div className="flex items-center gap-1.5 mt-0.5">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
               <span className="text-[10px] text-primary/80 uppercase tracking-wider font-semibold">
@@ -327,7 +327,7 @@ export default function ChatbotWidget({ sensor, isConnected }) {
             <span className="material-symbols-outlined text-[20px]">send</span>
           </button>
         </div>
-        <p className="text-[9px] text-gray-500 text-center">AgroBot can make mistakes. Verify important farming information.</p>
+        <p className="text-[9px] text-gray-500 text-center">AgroTech Chatbot can make mistakes. Verify important farming information.</p>
       </div>
     </div>
   );

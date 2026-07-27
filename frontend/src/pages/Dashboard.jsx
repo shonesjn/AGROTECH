@@ -5,10 +5,18 @@ import ChartSection from "../components/ChartSection";
 import WeatherWidget from "../components/WeatherWidget";
 import AIAlertPanel from "../components/AIAlertPanel";
 import ChatbotWidget from "../components/ChatbotWidget";
-import { Thermometer, Droplets, Droplet, Sun } from "lucide-react";
+import { Thermometer, Droplets, Droplet, Sun, Activity, Shield, AlertTriangle } from "lucide-react";
 
 export default function Dashboard() {
-  const [sensor, setSensor] = useState(null);
+  const [sensor, setSensor] = useState({
+    temperature: 28.5,
+    humidity: 65.0,
+    moisture: 45.0,
+    light: 550,
+    tilt: false,
+    overallConfidence: 100,
+    status: "Reliable"
+  });
   const [isConnected, setIsConnected] = useState(true);
 
   const getGreeting = () => {
@@ -36,6 +44,17 @@ export default function Dashboard() {
     const interval = setInterval(fetchLatestSensor, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  const overallConfidenceVal = sensor && sensor.overallConfidence !== undefined ? sensor.overallConfidence : 100;
+  
+  // Reading reliability status directly from MongoDB data
+  const reliabilityStatusVal = sensor && sensor.status ? sensor.status : "Reliable";
+
+  const reliabilityColor = reliabilityStatusVal === "Reliable"
+    ? "#4edea3" // Green
+    : reliabilityStatusVal === "Warning"
+      ? "#f9bd22" // Yellow
+      : "#ffb4ab"; // Red
 
   if (!sensor) {
     return (
@@ -324,6 +343,48 @@ export default function Dashboard() {
                   icon={<Sun size={20} />}
                   color="#f9bd22"
                   status={sensor.light > 700 ? "Bright" : sensor.light > 300 ? "Normal" : "Low"}
+                  isConnected={isConnected}
+                />
+              </div>
+            </section>
+
+            {/* System Health & Security Grid */}
+            <section>
+              <div className="flex items-center justify-between mb-stack-md">
+                <h4 className="font-body-lg font-bold text-on-surface uppercase tracking-wider">System Health & Security</h4>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_#10b981]"></div>
+                  <span className="font-label-mono text-emerald-400 text-[10px]">DIAGNOSTICS & TELEMETRY</span>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+                <SensorCard
+                  title="Overall Confidence"
+                  value={overallConfidenceVal}
+                  unit="%"
+                  icon={<Activity size={20} />}
+                  color={reliabilityColor}
+                  status={overallConfidenceVal >= 80 ? "High" : overallConfidenceVal >= 50 ? "Moderate" : "Low"}
+                  isConnected={isConnected}
+                />
+
+                <SensorCard
+                  title="Reliability Status"
+                  value={reliabilityStatusVal}
+                  unit=""
+                  icon={<Shield size={20} />}
+                  color={reliabilityColor}
+                  status={reliabilityStatusVal}
+                  isConnected={isConnected}
+                />
+
+                <SensorCard
+                  title="Tilt Detection"
+                  value={sensor.tilt ? "Tilt Detected" : "Stable"}
+                  unit=""
+                  icon={sensor.tilt ? <AlertTriangle size={20} /> : <Shield size={20} />}
+                  color={sensor.tilt ? "#ffb4ab" : "#4edea3"}
+                  status={sensor.tilt ? "ALERT" : "SECURE"}
                   isConnected={isConnected}
                 />
               </div>
